@@ -1,12 +1,16 @@
 <template>
-  <div class="search-container">
+  <div class="search-container" @click="this.$refs.search_title.focus()">
     <input
       type="text"
+      ref="search_title"
       name="search"
       placeholder="Search any movie..."
-      class="search-input"
+      class="search-txt"
     />
-    <a href="#" class="search-btn">
+    <a
+      @click="this.searchTitle(this.$refs.search_title.value)"
+      class="search-btn"
+    >
       <i class="fas fa-search"></i>
     </a>
   </div>
@@ -17,60 +21,42 @@ import { mapActions } from "vuex";
 export default {
   name: "MovieSearch",
   methods: {
-    ...mapActions(["searchFilm"]),
+    ...mapActions(["searchTitle"]),
   },
 };
 </script>
 
 <style scoped>
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #b2e0df;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .search-container {
-  background: #fff;
-  height: 30px;
-  border-radius: 30px;
-  padding: 10px 20px;
+  background: #40363c;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+}
+.search-btn {
+  color: #a67f68;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #40363c;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  transition: 0.8s;
-  /*box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-  inset -7px -7px 10px 0px rgba(0,0,0,.1),
- 7px 7px 20px 0px rgba(0,0,0,.1),
- 4px 4px 5px 0px rgba(0,0,0,.1);
- text-shadow:  0px 0px 6px rgba(255,255,255,.3),
-            -4px -4px 6px rgba(116, 125, 136, .2);
-text-shadow: 2px 2px 3px rgba(255,255,255,0.5);*/
-  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
-    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
-    inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: 0.4s;
 }
-
-.search-container:hover > .search-input {
-  width: 400px;
-}
-
-.search-container .search-input {
-  background: transparent;
+.search-txt {
   border: none;
+  background: none;
   outline: none;
-  width: 0px;
-  font-weight: 500;
+  float: inside;
+  color: #d9c2ad;
   font-size: 16px;
-  transition: 0.8s;
+  line-height: 40px;
+  padding: 0 6px;
 }
-
-.search-container .search-btn .fas {
-  color: #5cbdbb;
+.search-container:hover > .search-btn {
+  background: #d9c2ad;
 }
 </style>

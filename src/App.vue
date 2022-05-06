@@ -1,18 +1,32 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <div class="nav-content">
+      <p>IMDB Academy</p>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+      <a class="top-search">
+        <i class="fas fa-search"></i>
+      </a>
+    </div>
   </nav>
   <router-view />
 </template>
 
 <style lang="scss">
+//Color palette:
+.color_palette {
+  color: #40363c;
+  color: #bf9a78;
+  color: #d9c2ad;
+  color: #a67f68;
+  color: #0d0d0d;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #d9c2ad;
   @media only screen and (min-width: 640px) {
     .movie-table {
       display: grid;
@@ -27,7 +41,7 @@
       display: grid;
       grid-template-columns: 50% 50%;
       grid-column-gap: 10px;
-      grid-row-gap: 20px;
+      padding: 20px;
     }
   }
 
@@ -42,8 +56,19 @@
 }
 
 nav {
-  padding: 30px;
+  position: absolute;
+  width: 100%;
+}
 
+.nav-content {
+  display: flex;
+  padding: 30px;
+  background-color: black;
+  width: 100%;
+
+  p {
+    font-size: xx-large;
+  }
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -51,5 +76,9 @@ nav {
       color: #42b983;
     }
   }
+}
+
+body {
+  background: #0d0d0d;
 }
 </style>

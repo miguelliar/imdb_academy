@@ -1,17 +1,9 @@
 <template>
-  <head>
-    <link
-      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
-      rel="stylesheet"
-    />
-  </head>
   <div class="home">
-    <h1>Welcome to IMDB Academy Webpage</h1>
-    <MovieSearch />
+    <div class="header">
+      <h1>IMDB Academy Webpage</h1>
+      <MovieSearch />
+    </div>
     <MovieList />
   </div>
 </template>
@@ -29,11 +21,28 @@ import MovieSearch from "@/components/MovieSearch.vue";
   },
   name: "HomeView",
   methods: {
-    ...mapActions(["searchFilm"]),
+    ...mapActions(["searchFrontPage"]),
   },
   created() {
-    this.searchFilm("http://localhost:8080/api/search");
+    this.searchFrontPage();
   },
 })
 export default class HomeView extends Vue {}
 </script>
+
+<style>
+.header {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  margin-bottom: 30px;
+}
+
+.header > * {
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+
+.header > h1 {
+  font-size: xxx-large;
+}
+</style>

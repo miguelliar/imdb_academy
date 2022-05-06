@@ -25,6 +25,12 @@ export default createStore({
     searchFrontPage(context) {
       return context.dispatch("searchFilm", "http://localhost:8080/api/search");
     },
+    searchTitle(context, title) {
+      return context.dispatch(
+        "searchFilm",
+        "http://localhost:8080/api/search?q=" + title
+      );
+    },
   },
   modules: {},
 });
