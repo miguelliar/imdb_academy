@@ -13,20 +13,19 @@
 </template>
 
 <style lang="scss">
-//Color palette:
-.color_palette {
-  color: #40363c;
-  color: #bf9a78;
-  color: #d9c2ad;
-  color: #a67f68;
-  color: #0d0d0d;
+:root {
+  --bright-color: #d9c2ad;
+  --mid-brigth: #bf9a78;
+  --mid-dark: #a67f68;
+  --dark-color: #40363c;
+  --background-dark-color: #0d0d0d;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #d9c2ad;
+  color: var(--bright-color);
   @media only screen and (min-width: 640px) {
     .movie-table {
       display: grid;
@@ -56,8 +55,9 @@
 }
 
 nav {
-  position: absolute;
+  position: fixed;
   width: 100%;
+  height: 10%;
 }
 
 .nav-content {
@@ -65,6 +65,7 @@ nav {
   padding: 30px;
   background-color: black;
   width: 100%;
+  height: 10%;
 
   p {
     font-size: xx-large;
@@ -79,6 +80,6 @@ nav {
 }
 
 body {
-  background: #0d0d0d;
+  background: var(--background-dark-color);
 }
 </style>

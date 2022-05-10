@@ -2,7 +2,7 @@
   <div class="movie-table">
     <MovieItem
       v-for="movie in searchedFilms"
-      :key="movie.primaryTitle"
+      :key="movie.source.primaryTitle"
       :movie="movie"
     >
     </MovieItem>
@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { mapGetters } from "vuex";
-import MovieItem from "@/components/MovieItem.vue";
+import MovieItem from "@/components/items/MovieItem.vue";
 
 export default {
   name: "MovieList",

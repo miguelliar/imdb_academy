@@ -1,9 +1,18 @@
 import { createStore } from "vuex";
-import { filmFormat } from "@/store/FilmFormat";
+import { FilmFormat } from "@/store/FilmFormat";
+import {
+  fetchURL,
+  pagination,
+  plainSearch,
+  searchQuery,
+} from "@/store/FetchMethods";
 
 export default createStore({
   state: {
-    searchedFilms: [filmFormat],
+    searchedFilms: [] as FilmFormat[],
+    from: 0,
+    size: 10,
+    currentSearch: "",
   },
   getters: {
     searchedFilms(state) {
@@ -14,21 +23,41 @@ export default createStore({
     setSearchedFilms(state, listOfFilms) {
       state.searchedFilms = listOfFilms;
     },
+    addListOfFilms(state, listOfFilms) {
+      state.searchedFilms = [state.searchedFilms, ...listOfFilms];
+    },
+    setCurrentSearch(state, search) {
+      state.currentSearch = search;
+    },
+    setNextPage(state) {
+      state.from = state.from + state.size;
+    },
+    setBeginningPage(state) {
+      state.from = 0;
+    },
   },
   actions: {
-    searchFilm(context, url) {
-      return fetch(url)
-        .then((data) => data.json())
-        .then((result) => context.commit("setSearchedFilms", result))
-        .catch((err) => console.log(err));
+    async defaultSearch(context, url: string) {
+      context.commit("setSearchedFilms", await fetchURL(url));
+      context.commit("setCurrentSearch", url);
+      context.commit("setBeginningPage");
     },
     searchFrontPage(context) {
-      return context.dispatch("searchFilm", "http://localhost:8080/api/search");
+      context.dispatch("defaultSearch", plainSearch);
     },
-    searchTitle(context, title) {
-      return context.dispatch(
-        "searchFilm",
-        "http://localhost:8080/api/search?q=" + title
+    searchTitle(context, title: string) {
+      if (title.trim().length === 0) {
+        context.dispatch("searchFrontPage");
+      } else {
+        context.dispatch("defaultSearch", searchQuery + title);
+      }
+    },
+    nextPage(context) {
+      context.commit("setNextPage");
+      const state = context.state;
+      context.commit(
+        "addListOfFilms",
+        fetchURL(state.currentSearch + pagination(state.from, state.size))
       );
     },
   },

@@ -2,15 +2,12 @@
   <div class="search-container" @click="this.$refs.search_title.focus()">
     <input
       type="text"
-      ref="search_title"
       name="search"
       placeholder="Search any movie..."
       class="search-txt"
+      :value="searchInput"
     />
-    <a
-      @click="this.searchTitle(this.$refs.search_title.value)"
-      class="search-btn"
-    >
+    <a @click="this.searchTitle(searchInput)" class="search-btn">
       <i class="fas fa-search"></i>
     </a>
   </div>
@@ -20,6 +17,11 @@
 import { mapActions } from "vuex";
 export default {
   name: "MovieSearch",
+  data() {
+    return {
+      searchInput: "",
+    };
+  },
   methods: {
     ...mapActions(["searchTitle"]),
   },
@@ -34,12 +36,12 @@ export default {
   padding: 10px;
 }
 .search-btn {
-  color: #a67f68;
+  color: var(--mid-dark);
   float: right;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #40363c;
+  background: var(--dark-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,12 +53,12 @@ export default {
   background: none;
   outline: none;
   float: inside;
-  color: #d9c2ad;
+  color: var(--bright-color);
   font-size: 16px;
   line-height: 40px;
   padding: 0 6px;
 }
 .search-container:hover > .search-btn {
-  background: #d9c2ad;
+  background: var(--bright-color);
 }
 </style>
