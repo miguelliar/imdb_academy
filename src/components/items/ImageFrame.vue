@@ -6,10 +6,7 @@
       alt="Default image for a film frame"
     />
     <div class="movie-data">
-      <p>
-        Title: {{ movieSource.primaryTitle }} - Original title:
-        {{ movieSource.originalTitle }}
-      </p>
+      <p class="film-title">Title: {{ movieSource.primaryTitle }}</p>
       <p>Air date: {{ movieSource.startYear }}</p>
       <p>Runtime minutes: {{ movieSource.runtimeMinutes }}</p>
       <p>Genres: {{ movieSource.genres }}</p>
@@ -41,6 +38,12 @@ export default {
 </script>
 
 <style scoped>
+img {
+  transition: 1s;
+}
+.film-title {
+  font-weight: bold;
+}
 .film-cover {
   border-radius: 10px;
   margin-top: 10px;
@@ -48,5 +51,8 @@ export default {
 .movie-data {
   visibility: hidden;
   position: absolute;
+  text-align: left;
+  left: 5%;
+  top: 5%;
 }
 </style>

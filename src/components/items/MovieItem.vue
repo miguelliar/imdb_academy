@@ -1,13 +1,15 @@
 <template>
   <div class="movie-item">
     <ImageFrame :movie="movie"></ImageFrame>
-    <p class="main-data">
-      {{ movieSource.primaryTitle }} - {{ movieSource.startYear }}
-    </p>
-    <p class="rating">
-      {{ movieSource.averageRating }}
-      <i class="fas fa-star" aria-hidden="true"></i>
-    </p>
+    <div class="movie-footer">
+      <p class="main-data">
+        {{ movieSource.primaryTitle }} - {{ movieSource.startYear }}
+      </p>
+      <p class="rating">
+        {{ movieSource.averageRating }}
+        <i class="fas fa-star" aria-hidden="true"></i>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -31,9 +33,10 @@ export default {
 
 <style scoped>
 .movie-item {
-  background: var(--dark-color);
-  padding-left: 10px;
-  padding-right: 10px;
+  position: relative;
+  background: var(--dark-color-transparent);
+  padding-left: 3px;
+  padding-right: 3px;
   border-radius: 10px;
 }
 .rating {
@@ -41,13 +44,15 @@ export default {
 }
 
 .movie-item:hover >>> img {
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  filter: blur(8px) brightness(20%);
+  -webkit-filter: blur(8px) brightness(20%);
 }
 
 .movie-item:hover :deep(.movie-data) {
-  position: relative; /*static*/
-  display: inline-block;
+  position: absolute;
+  width: auto;
+  display: block;
   visibility: visible;
+  opacity: 80%;
 }
 </style>

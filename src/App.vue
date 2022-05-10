@@ -18,6 +18,7 @@
   --mid-brigth: #bf9a78;
   --mid-dark: #a67f68;
   --dark-color: #40363c;
+  --dark-color-transparent: hsl(324, 8%, 23%, 0.25);
   --background-dark-color: #0d0d0d;
 }
 #app {
