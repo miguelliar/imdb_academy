@@ -2,9 +2,9 @@
   <nav>
     <div class="nav-content">
       <p>IMDB Academy</p>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-      <a class="top-search">
+      <router-link to="/">Home</router-link> &emsp;
+      <router-link to="/about">About</router-link> &emsp;
+      <a v-if="$route.name === 'home'" class="top-search">
         <i class="fas fa-search"></i>
       </a>
     </div>
@@ -14,6 +14,8 @@
 
 <style lang="scss">
 :root {
+  --link-inactive-color: #2c3e50;
+  --link-active-color: #42b983;
   --bright-color: #d9c2ad;
   --mid-brigth: #bf9a78;
   --mid-dark: #a67f68;
@@ -57,8 +59,11 @@
 
 nav {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 10%;
+  z-index: 10;
 }
 
 .nav-content {
@@ -70,17 +75,41 @@ nav {
 
   p {
     font-size: xx-large;
+    margin-top: -20px;
+    margin-right: 10px;
   }
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--link-inactive-color);
+    margin-top: -5px;
     &.router-link-exact-active {
-      color: #42b983;
+      color: var(--link-active-color);
     }
   }
+  .top-search {
+    position: absolute;
+    left: 90%;
+    color: var(--mid-dark);
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--dark-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-top: -15px;
+    transition: 0.4s;
+  }
+}
+
+.top-search:hover {
+  background: var(--bright-color);
 }
 
 body {
   background: var(--background-dark-color);
+  margin-top: 7%;
 }
 </style>
