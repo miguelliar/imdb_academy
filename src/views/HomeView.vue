@@ -12,7 +12,7 @@
 import { Options, Vue } from "vue-class-component";
 import MovieList from "@/components/MovieList.vue"; // @ is an alias to /src
 import { mapActions } from "vuex";
-import MovieSearch from "@/components/MovieSearch.vue";
+import MovieSearch from "@/components/search/MovieSearch.vue";
 
 @Options({
   components: {

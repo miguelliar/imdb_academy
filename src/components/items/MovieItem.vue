@@ -43,7 +43,7 @@ export default {
   margin-top: -15px;
 }
 
-.movie-item:hover >>> img {
+.movie-item:hover :deep(img) {
   filter: blur(8px) brightness(20%);
   -webkit-filter: blur(8px) brightness(20%);
 }

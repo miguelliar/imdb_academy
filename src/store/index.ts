@@ -2,9 +2,11 @@ import { createStore } from "vuex";
 import { FilmFormat } from "@/store/FilmFormat";
 import {
   fetchURL,
+  genresFilterQuery,
   pagination,
   plainSearch,
-  searchQuery,
+  titleFilterQuery,
+  typeFilterQuery,
 } from "@/store/FetchMethods";
 
 export default createStore({
@@ -45,12 +47,24 @@ export default createStore({
     searchFrontPage(context) {
       context.dispatch("defaultSearch", plainSearch);
     },
-    searchTitle(context, title: string) {
-      if (title.trim().length === 0) {
-        context.dispatch("searchFrontPage");
-      } else {
-        context.dispatch("defaultSearch", searchQuery + title);
+    searchFilm(
+      context,
+      params: {
+        searchInput: string;
+        genresFilters: string[];
+        typeFilters: string[];
       }
+    ) {
+      console.log(params);
+      console.log(params.searchInput);
+      console.log(params.typeFilters);
+      context.dispatch(
+        "defaultSearch",
+        plainSearch +
+          titleFilterQuery(params.searchInput) +
+          genresFilterQuery(params.genresFilters) +
+          typeFilterQuery(params.typeFilters)
+      );
     },
     nextPage(context) {
       context.commit("setNextPage");

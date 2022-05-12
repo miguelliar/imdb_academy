@@ -51,6 +51,8 @@ export default {
 <style scoped>
 img {
   transition: 1s;
+  max-width: 100%;
+  max-height: 100%;
 }
 .film-title {
   font-weight: bold;

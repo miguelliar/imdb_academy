@@ -9,23 +9,46 @@
       :value="searchInput"
       @input="(event) => (searchInput = event.target.value)"
     />
-    <a @click="this.searchTitle(searchInput)" class="search-btn">
+    <a
+      @click="searchFilm({ searchInput, genresFilters, typeFilters })"
+      class="search-btn"
+    >
       <i class="fas fa-search"></i>
     </a>
   </div>
+  <CheckboxGroup
+    :filters="['Drama', 'Comedy', 'Action', 'Family']"
+    @filter-change="updateGenresFilters"
+  ></CheckboxGroup>
+  <CheckboxGroup
+    :filters="['movie', 'short', 'video', 'tvMovie']"
+    @filter-change="updateTypeFilters"
+  ></CheckboxGroup>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import CheckboxGroup from "@/components/search/CheckboxGroup";
+
 export default {
   name: "MovieSearch",
+  components: { CheckboxGroup },
   data() {
     return {
       searchInput: "",
+      genresFilters: [],
+      typeFilters: [],
     };
   },
   methods: {
-    ...mapActions(["searchTitle"]),
+    ...mapActions(["searchFilm"]),
+    updateGenresFilters(genres) {
+      this.genresFilters = genres;
+      console.log(this.genresFilters);
+    },
+    updateTypeFilters(types) {
+      this.typeFilters = types;
+    },
   },
 };
 </script>
