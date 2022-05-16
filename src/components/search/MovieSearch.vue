@@ -16,14 +16,31 @@
       <i class="fas fa-search"></i>
     </a>
   </div>
-  <CheckboxGroup
-    :filters="['Drama', 'Comedy', 'Action', 'Family']"
-    @filter-change="updateGenresFilters"
-  ></CheckboxGroup>
-  <CheckboxGroup
-    :filters="['movie', 'short', 'video', 'tvMovie']"
-    @filter-change="updateTypeFilters"
-  ></CheckboxGroup>
+  <div class="search-filters">
+    <CheckboxGroup
+      :filters="[
+        'Drama',
+        'Comedy',
+        'Action',
+        'Family',
+        'Something',
+        'Something more',
+        'even more',
+        'bla1',
+        'bla2',
+        'bla3',
+        'bla4',
+        'bla5',
+        'bla6',
+        'bla',
+      ]"
+      @filter-change="updateGenresFilters"
+    ></CheckboxGroup>
+    <CheckboxGroup
+      :filters="['movie', 'short', 'video', 'tvMovie']"
+      @filter-change="updateTypeFilters"
+    ></CheckboxGroup>
+  </div>
 </template>
 
 <script>
@@ -44,7 +61,6 @@ export default {
     ...mapActions(["searchFilm"]),
     updateGenresFilters(genres) {
       this.genresFilters = genres;
-      console.log(this.genresFilters);
     },
     updateTypeFilters(types) {
       this.typeFilters = types;
@@ -85,5 +101,10 @@ export default {
 }
 .search-container:hover > .search-btn {
   background: var(--bright-color);
+}
+
+.search-filters {
+  background-color: var(--dark-color);
+  margin-top: 10%;
 }
 </style>

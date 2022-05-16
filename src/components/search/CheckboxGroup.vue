@@ -34,4 +34,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.filter-container {
+  display: grid;
+}
+</style>

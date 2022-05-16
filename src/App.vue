@@ -2,8 +2,10 @@
   <nav>
     <div class="nav-content">
       <p>IMDB Academy</p>
-      <router-link to="/">Home</router-link> &emsp;
-      <router-link to="/about">About</router-link> &emsp;
+      <div class="nav-links">
+        <router-link to="/">Home</router-link> &emsp;
+        <router-link to="/about">About</router-link> &emsp;
+      </div>
       <a v-if="$route.name === 'home'" class="top-search">
         <i class="fas fa-search"></i>
       </a>
@@ -36,14 +38,22 @@
       grid-column-gap: 0;
       grid-row-gap: 20px;
     }
+    .filter-container {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
   }
 
-  @media only screen and (min-width: 1366px) {
+  @media only screen and (min-width: 1200px) {
     .movie-table {
       display: grid;
       grid-template-columns: 50% 50%;
       grid-column-gap: 10px;
       padding: 20px;
+    }
+    .filter-container {
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
     }
   }
 
@@ -53,6 +63,10 @@
       grid-template-columns: 33% 33% 33%;
       grid-column-gap: 0;
       grid-row-gap: 20px;
+    }
+    .filter-container {
+      display: grid;
+      grid-template-columns: 20% 20% 20% 20% 20%;
     }
   }
 }
@@ -78,12 +92,45 @@ nav {
     margin-top: -20px;
     margin-right: 10px;
   }
-  a {
+  .nav-links {
+    border-radius: 25px;
+    height: fit-content;
+    display: inline-flex;
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    padding: 0 10px;
+    margin-top: -17px;
+  }
+  a:not(.top-search) {
+    list-style: none;
+    color: white;
+    font-family: sans-serif;
     font-weight: bold;
-    color: var(--link-inactive-color);
-    margin-top: -5px;
-    &.router-link-exact-active {
-      color: var(--link-active-color);
+    padding: 12px 16px;
+    margin: 0 8px;
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    &::before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      transition: 1.5s;
+      border-radius: 25px;
+    }
+    &:hover {
+      &::before {
+        background: linear-gradient(to bottom, #e8edec, #d2d1d3);
+        box-shadow: 0px 3px 20px black;
+        transform: scale(1.2);
+      }
+      color: black;
     }
   }
   .top-search {

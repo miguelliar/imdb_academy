@@ -1,3 +1,4 @@
+//---------------------CONSTANTS-----------------------------
 //Fetch URL base
 export const plainSearch = "http://localhost:8080/api/search?";
 export const imageSearch = (id: string) =>
@@ -29,8 +30,9 @@ export const typeFilterQuery = (types: string[]) =>
     ? ""
     : types.reduce((res, type) => res + `&type=${type}`, "");
 
+//---------------------METHODS-----------------------------
+
 export async function fetchURL(url: string) {
-  console.log(url);
   return await fetch(url).then((data) => data.json());
 }
 

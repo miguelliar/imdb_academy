@@ -55,9 +55,6 @@ export default createStore({
         typeFilters: string[];
       }
     ) {
-      console.log(params);
-      console.log(params.searchInput);
-      console.log(params.typeFilters);
       context.dispatch(
         "defaultSearch",
         plainSearch +

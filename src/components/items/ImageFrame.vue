@@ -3,7 +3,7 @@
     <img
       :src="movieCover"
       class="film-cover"
-      alt="Default image for a film frame"
+      :alt="'Film cover of ' + movieSource.primaryTitle"
     />
     <div class="movie-data">
       <p class="film-title">Title: {{ movieSource.primaryTitle }}</p>
