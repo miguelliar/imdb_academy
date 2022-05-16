@@ -12,8 +12,13 @@ export type FilmFormat = {
     averageRating: number;
     numVotes: number;
   };
+  additionalInformation?: {
+    Plot: string;
+    Poster: string;
+  };
 };
 
+//extraer en carpeta models
 export const filmProject: FilmFormat = {
   id: "1",
   source: {

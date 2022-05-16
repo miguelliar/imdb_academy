@@ -30,23 +30,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--bright-color);
+  color: var(--bright-color); //extraer display:grid
+  .movie-table {
+    display: grid;
+  }
   @media only screen and (min-width: 640px) {
     .movie-table {
-      display: grid;
       grid-template-columns: 100%;
       grid-column-gap: 0;
       grid-row-gap: 20px;
     }
     .filter-container {
-      display: grid;
       grid-template-columns: 50% 50%;
     }
   }
 
   @media only screen and (min-width: 1200px) {
     .movie-table {
-      display: grid;
       grid-template-columns: 50% 50%;
       grid-column-gap: 10px;
       padding: 20px;
@@ -59,7 +59,6 @@
 
   @media only screen and (min-width: 1920px) {
     .movie-table {
-      display: grid;
       grid-template-columns: 33% 33% 33%;
       grid-column-gap: 0;
       grid-row-gap: 20px;

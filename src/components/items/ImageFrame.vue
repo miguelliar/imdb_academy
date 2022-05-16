@@ -1,7 +1,7 @@
 <template>
   <div class="image-frame">
     <img
-      :src="movieCover"
+      :src="movieAdditional.Poster"
       class="film-cover"
       :alt="'Film cover of ' + movieSource.primaryTitle"
     />
@@ -20,7 +20,6 @@
 
 <script>
 import { filmProject } from "@/store/FilmFormat";
-import { fetchCover } from "@/store/FetchMethods";
 
 export default {
   name: "ImageFrame",
@@ -36,14 +35,9 @@ export default {
     movieSource() {
       return this.movie.source;
     },
-  },
-  methods: {
-    async changeCover() {
-      this.$data.movieCover = await fetchCover(this.$props.movie.id);
+    movieAdditional() {
+      return this.movie.additionalInformation;
     },
-  },
-  mounted() {
-    this.changeCover();
   },
 };
 </script>

@@ -1,4 +1,5 @@
 //---------------------CONSTANTS-----------------------------
+// ------------URL-------------
 //Fetch URL base
 export const plainSearch = "http://localhost:8080/api/search?";
 export const imageSearch = (id: string) =>
@@ -30,23 +31,45 @@ export const typeFilterQuery = (types: string[]) =>
     ? ""
     : types.reduce((res, type) => res + `&type=${type}`, "");
 
+// ------------Object-------------
+//Default value for cover path
+const defaultCoverPath = "../assets/movie_low.jpg";
+//Default value for description
+const defaultPlot = "There description is unavailable";
+
+//Returns true if the response is correct
+const checkResponseAvailable = (response: {
+  Response: string;
+  Poster: string;
+}) => response && response["Response"] === "True";
+
+//Returns the cover path
+const coverPath = (response: { Poster: string }) =>
+  response["Poster"] && response["Poster"] !== "N/A"
+    ? response["Poster"]
+    : require(defaultCoverPath);
+
+//Returns the description
+const plotContent = (response: { Plot: string }) =>
+  response["Plot"] && response["Plot"] !== "N/A"
+    ? response["Plot"]
+    : defaultPlot;
+
 //---------------------METHODS-----------------------------
 
 export async function fetchURL(url: string) {
   return await fetch(url).then((data) => data.json());
 }
 
-export async function fetchCover(id: string) {
+export async function fetchAdditionalInformation(id: string) {
   const returned = await fetchURL(imageSearch(id));
   if (
-    returned !== undefined &&
-    returned["Response"] === "True" &&
-    returned["Poster"] !== "N/A"
+    // Extraer toda la condición en una función
+    checkResponseAvailable(returned)
   ) {
-    console.log(returned);
-    return returned["Poster"];
+    return { Plot: plotContent(returned), Poster: coverPath(returned) };
   } else {
-    return require("../assets/movie_low.jpg");
+    return { Plot: defaultPlot, Poster: require(defaultCoverPath) };
   }
 }
 

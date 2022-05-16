@@ -9,7 +9,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/about",
-    name: "about",
+    name: "about", //Crear un chunk para cada una de las rutas
+    //Leer acerca del pre-fetching --> Cargar antes
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

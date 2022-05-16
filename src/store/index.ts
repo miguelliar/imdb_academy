@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import { FilmFormat } from "@/store/FilmFormat";
 import {
+  fetchAdditionalInformation,
   fetchURL,
   genresFilterQuery,
   pagination,
@@ -40,7 +41,12 @@ export default createStore({
   },
   actions: {
     async defaultSearch(context, url: string) {
-      context.commit("setSearchedFilms", await fetchURL(url));
+      const films: FilmFormat[] = await fetchURL(url);
+      for (const film of films) {
+        film.additionalInformation = await fetchAdditionalInformation(film.id);
+      }
+      console.log(films);
+      context.commit("setSearchedFilms", films);
       context.commit("setCurrentSearch", url);
       context.commit("setBeginningPage");
     },
@@ -57,10 +63,11 @@ export default createStore({
     ) {
       context.dispatch(
         "defaultSearch",
-        plainSearch +
-          titleFilterQuery(params.searchInput) +
-          genresFilterQuery(params.genresFilters) +
-          typeFilterQuery(params.typeFilters)
+        `${plainSearch}${titleFilterQuery(
+          params.searchInput
+        )}${genresFilterQuery(params.genresFilters)}${typeFilterQuery(
+          params.typeFilters
+        )}`
       );
     },
     nextPage(context) {

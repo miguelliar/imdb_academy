@@ -4,10 +4,10 @@
       type="text"
       name="search"
       ref="search_title"
-      placeholder="Search any movie..."
+      placeholder="Search any
+    movie..."
       class="search-txt"
-      :value="searchInput"
-      @input="(event) => (searchInput = event.target.value)"
+      v-model="searchInput"
     />
     <a
       @click="searchFilm({ searchInput, genresFilters, typeFilters })"
