@@ -31,7 +31,12 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--bright-color); //extraer display:grid
+
   .movie-table {
+    display: grid;
+  }
+
+  .filter-container {
     display: grid;
   }
   @media only screen and (min-width: 640px) {
@@ -41,7 +46,7 @@
       grid-row-gap: 20px;
     }
     .filter-container {
-      grid-template-columns: 50% 50%;
+      grid-template-columns: 33% 33% 33%;
     }
   }
 
@@ -52,8 +57,7 @@
       padding: 20px;
     }
     .filter-container {
-      display: grid;
-      grid-template-columns: 25% 25% 25% 25%;
+      grid-template-columns: 20% 20% 20% 20% 20%;
     }
   }
 
@@ -62,10 +66,6 @@
       grid-template-columns: 33% 33% 33%;
       grid-column-gap: 0;
       grid-row-gap: 20px;
-    }
-    .filter-container {
-      display: grid;
-      grid-template-columns: 20% 20% 20% 20% 20%;
     }
   }
 }

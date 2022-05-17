@@ -21,12 +21,13 @@ export default {
 </script>
 
 <style scoped>
-div {
+label {
   height: fit-content;
-  margin: 5px;
+  padding: 5px;
   float: left;
   border-radius: 10px;
-  border: 2px solid #50bcf2;
+  background-color: var(--mid-dark);
+  color: var(--dark-color);
 }
 
 .checkbox-button-container {
@@ -42,11 +43,13 @@ div {
 .checkbox-button {
   top: 0;
   left: 0;
+  width: 0;
+  height: 0;
   opacity: 0;
   cursor: pointer;
 }
 
 input[type="checkbox"]:checked ~ label {
-  background-color: #50bcf2;
+  background-color: var(--bright-color);
 }
 </style>

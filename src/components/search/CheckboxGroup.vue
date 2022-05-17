@@ -1,4 +1,5 @@
 <template>
+  <p>{{ name }}</p>
   <div class="filter-container">
     <CheckboxButton
       v-for="attribute in filters"
@@ -21,6 +22,7 @@ export default {
     };
   },
   props: {
+    name: String,
     filters: [],
   },
   methods: {
@@ -35,7 +37,15 @@ export default {
 </script>
 
 <style scoped>
+p {
+  font-weight: bolder;
+  text-align: left;
+}
 .filter-container {
   display: grid;
+  border: 2px solid var(--mid-brigth);
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: -10px;
 }
 </style>

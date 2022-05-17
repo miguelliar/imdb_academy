@@ -18,6 +18,7 @@
   </div>
   <div class="search-filters">
     <CheckboxGroup
+      :name="'Genres'"
       :filters="[
         'Drama',
         'Comedy',
@@ -37,6 +38,7 @@
       @filter-change="updateGenresFilters"
     ></CheckboxGroup>
     <CheckboxGroup
+      :name="'Types'"
       :filters="['movie', 'short', 'video', 'tvMovie']"
       @filter-change="updateTypeFilters"
     ></CheckboxGroup>
@@ -105,6 +107,8 @@ export default {
 
 .search-filters {
   background-color: var(--dark-color);
-  margin-top: 10%;
+  margin: 5% 5% -2%;
+  padding: 3% 5% 5%;
+  border-radius: 10px;
 }
 </style>
