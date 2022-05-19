@@ -1,7 +1,7 @@
 <template>
   <div class="image-frame">
     <img
-      :src="movieAdditional.Poster"
+      :src="movieCover"
       class="film-cover"
       :alt="'Film cover of ' + movieSource.primaryTitle"
     />
@@ -20,12 +20,15 @@
 
 <script>
 import { filmProject } from "@/store/FilmFormat";
+import { emptyPoster } from "@/store/FetchMethods";
+import * as moviePoster from "@/assets/movie_low.jpg";
 
 export default {
   name: "ImageFrame",
   data() {
     return {
-      movieCover: require("../../assets/movie_low.jpg"),
+      movieCover: moviePoster,
+      noPoster: emptyPoster,
     };
   },
   props: {

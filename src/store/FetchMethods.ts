@@ -32,8 +32,8 @@ export const typeFilterQuery = (types: string[]) =>
     : types.reduce((res, type) => res + `&type=${type}`, "");
 
 // ------------Object-------------
-//Default value for cover path
-const defaultCoverPath = "../assets/movie_low.jpg";
+//Empty link for poster
+export const emptyPoster = "";
 //Default value for description
 const defaultPlot = "There description is unavailable";
 
@@ -47,7 +47,7 @@ const checkResponseAvailable = (response: {
 const coverPath = (response: { Poster: string }) =>
   response["Poster"] && response["Poster"] !== "N/A"
     ? response["Poster"]
-    : require(defaultCoverPath);
+    : emptyPoster;
 
 //Returns the description
 const plotContent = (response: { Plot: string }) =>
@@ -69,7 +69,7 @@ export async function fetchAdditionalInformation(id: string) {
   ) {
     return { Plot: plotContent(returned), Poster: coverPath(returned) };
   } else {
-    return { Plot: defaultPlot, Poster: require(defaultCoverPath) };
+    return { Plot: defaultPlot, Poster: emptyPoster };
   }
 }
 

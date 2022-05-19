@@ -5,7 +5,7 @@
       <MovieSearch />
     </div>
     <MovieList />
-    <NotFounded v-if="searchedFilms.length === 0"></NotFounded>
+    <NotFounded v-show="searchedFilms.length === 0"></NotFounded>
   </div>
 </template>
 
