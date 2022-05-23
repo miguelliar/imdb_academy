@@ -33,4 +33,8 @@ export const filmProject: FilmFormat = {
     averageRating: 7,
     numVotes: 10,
   },
+  additionalInformation: {
+    Plot: "The plot of the film. Best film you've ever seen.",
+    Poster: "",
+  },
 };

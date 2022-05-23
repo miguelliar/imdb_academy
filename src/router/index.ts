@@ -8,6 +8,11 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
+    path: "/details/:id",
+    name: "details",
+    component: () => import("../views/DetailsView.vue"),
+  },
+  {
     path: "/about",
     name: "about", //Crear un chunk para cada una de las rutas
     //Leer acerca del pre-fetching --> Cargar antes
@@ -22,6 +27,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "insights",
     component: () =>
       import(/* webpackChunkName: "insights" */ "../views/InsightsView.vue"),
+  },
+
+  {
+    path: "/:pathMatch(.*)",
+    component: () /*webpackChunkName: "pageNotFound"*/ =>
+      import("../views/PageNotFound.vue"),
   },
 ];
 

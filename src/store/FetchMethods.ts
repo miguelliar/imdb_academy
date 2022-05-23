@@ -1,7 +1,11 @@
 //---------------------CONSTANTS-----------------------------
 // ------------URL-------------
 //Fetch URL base
+import { RouteParamValue } from "vue-router";
+
 export const plainSearch = "http://localhost:8080/api/search?";
+export const idSearch = (id: string | RouteParamValue[]) =>
+  `http://localhost:8080/api/id_search?id=${id}`;
 export const imageSearch = (id: string) =>
   `http://www.omdbapi.com/?i=${id}&apikey=c13e24cd`;
 
@@ -10,10 +14,8 @@ const genresSearch = "?agg=genres";
 const titleTypeSearch = "?agg=titleType";
 
 //Pagination
-export const pagination: (a: number, b: number) => string = (
-  from: number,
-  size: number
-) => `?from=${from}&size=${size}`;
+export const pagination = (from: number, size: number) =>
+  `?from=${from}&size=${size}`;
 
 //Search parameters
 export const titleFilterQuery = (title: string) =>

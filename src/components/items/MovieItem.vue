@@ -1,5 +1,8 @@
 <template>
-  <div class="movie-item">
+  <div
+    class="movie-item"
+    @click="$router.push({ path: `/details/${movie.id}` })"
+  >
     <ImageFrame :movie="movie"></ImageFrame>
     <div class="movie-footer">
       <p class="main-data">
@@ -32,6 +35,10 @@ export default {
 </script>
 
 <style scoped>
+router-link p {
+  text-decoration: none;
+  color: var(--bright-color);
+}
 .movie-item {
   position: relative;
   background: var(--dark-color-transparent);
