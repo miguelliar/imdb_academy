@@ -1,7 +1,11 @@
 <template>
   <div class="image-frame">
     <img
-      :src="movieCover"
+      :src="
+        movieAdditional.Poster === noPoster
+          ? movieCover
+          : movieAdditional.Poster
+      "
       class="film-cover"
       :alt="'Film cover of ' + movieSource.primaryTitle"
     />
@@ -21,7 +25,7 @@
 <script>
 import { filmProject } from "@/store/FilmFormat";
 import { emptyPoster } from "@/store/FetchMethods";
-import * as moviePoster from "@/assets/movie_low.jpg";
+import moviePoster from "@/assets/movie_low.jpg";
 
 export default {
   name: "ImageFrame",
