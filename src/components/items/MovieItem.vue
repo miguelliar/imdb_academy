@@ -3,7 +3,7 @@
     class="movie-item"
     @click="$router.push({ path: `/details/${movie.id}` })"
   >
-    <ImageFrame :movie="movie"></ImageFrame>
+    <ImageFrame :movie="movie" />
     <div class="movie-footer">
       <p class="main-data">
         {{ movieSource.primaryTitle }} - {{ movieSource.startYear }}

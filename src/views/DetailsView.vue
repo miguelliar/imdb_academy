@@ -24,14 +24,10 @@
 
 <script>
 import { filmProject } from "@/store/FilmFormat";
-import { mapGetters } from "vuex";
-import {
-  emptyPoster,
-  fetchAdditionalInformation,
-  fetchURL,
-  idSearch,
-} from "@/store/FetchMethods";
+import { emptyPoster, fetchAdditionalInformation } from "@/utils/PosterFetch";
+
 import moviePoster from "@/assets/movie_low.jpg";
+import { fetchFilm } from "@/utils/movie/MovieFetch";
 
 export default {
   name: "ResourceView",
@@ -44,7 +40,7 @@ export default {
   },
   methods: {
     async computeMovie(id) {
-      this.movieData = (await fetchURL(idSearch(id)))[0];
+      this.movieData = await fetchFilm(id);
       this.movieData.additionalInformation = await fetchAdditionalInformation(
         id
       );

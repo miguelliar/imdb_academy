@@ -5,12 +5,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: HomeView, // hacer chunk
   },
   {
     path: "/details/:id",
     name: "details",
-    component: () => import("../views/DetailsView.vue"),
+    component: () => import("../views/DetailsView.vue"), //hacer chunk
   },
   {
     path: "/about",

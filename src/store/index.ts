@@ -1,14 +1,8 @@
 import { createStore } from "vuex";
-import { FilmFormat } from "@/store/FilmFormat";
-import {
-  fetchAdditionalInformation,
-  fetchURL,
-  genresFilterQuery,
-  pagination,
-  plainSearch,
-  titleFilterQuery,
-  typeFilterQuery,
-} from "@/store/FetchMethods";
+import { FilmFormat } from "@/models/MovieModel";
+import { fetchNextPage, filmsURL } from "@/utils/movie/MovieFetch";
+import { fetchURL } from "@/utils/FetchMethods";
+import { fetchAdditionalInformation } from "@/utils/PosterFetch";
 
 export default createStore({
   state: {
@@ -51,7 +45,7 @@ export default createStore({
       context.commit("setBeginningPage");
     },
     searchFrontPage(context) {
-      context.dispatch("defaultSearch", plainSearch);
+      context.dispatch("defaultSearch", filmsURL(""));
     },
     searchFilm(
       context,
@@ -63,11 +57,7 @@ export default createStore({
     ) {
       context.dispatch(
         "defaultSearch",
-        `${plainSearch}${titleFilterQuery(
-          params.searchInput
-        )}${genresFilterQuery(params.genresFilters)}${typeFilterQuery(
-          params.typeFilters
-        )}`
+        filmsURL(params.searchInput, params.genresFilters, params.typeFilters)
       );
     },
     nextPage(context) {
@@ -75,7 +65,7 @@ export default createStore({
       const state = context.state;
       context.commit(
         "addListOfFilms",
-        fetchURL(state.currentSearch + pagination(state.from, state.size))
+        fetchNextPage(state.currentSearch, state.from, state.size)
       );
     },
   },

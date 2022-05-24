@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     updateProperty(name) {
-      const indexOfName = this.selectedFilters.indexOf(name);
+      const indexOfName = this.selectedFilters.indexOf(name); //TODO: puede cambiarse por un findIndex
       indexOfName === -1
         ? this.selectedFilters.push(name)
         : this.selectedFilters.splice(indexOfName, 1);

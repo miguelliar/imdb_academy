@@ -2,6 +2,7 @@
   <div class="home">
     <div class="header">
       <h1>IMDB Academy Webpage</h1>
+      //TODO: Query param
       <MovieSearch />
     </div>
     <MovieList />

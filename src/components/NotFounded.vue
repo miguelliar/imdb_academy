@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "NotFounded",
+  name: "NotFunded", //TODO: Nombre founded-funded
 };
 </script>
 

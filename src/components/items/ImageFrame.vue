@@ -24,7 +24,7 @@
 
 <script>
 import { filmProject } from "@/store/FilmFormat";
-import { emptyPoster } from "@/store/FetchMethods";
+import { emptyPoster } from "@/utils/PosterFetch";
 import moviePoster from "@/assets/movie_low.jpg";
 
 export default {
